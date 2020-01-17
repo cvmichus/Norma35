@@ -1040,10 +1040,10 @@
     </div>
 
 
-    <input   class="form-control"  type="hidden" name="Cdom" id="Cdom"> 
-    <input   class="form-control"  type="hidden" name="Ccat" id="Ccat"> 
-    <input   class="form-control"  type="hidden" name="Cfinal" id="Cfinal"> 
-    <input   class="form-control"  type="hidden" name="CRes" id="CRes"> 
+    <input class="form-control" type="hidden" name="Cdom" id="Cdom"> 
+    <input class="form-control" type="hidden" name="Ccat" id="Ccat"> 
+    <input class="form-control" type="hidden" name="Cfinal" id="Cfinal"> 
+    <input class="form-control" type="hidden" name="CRes" id="CRes"> 
 
     <input type="hidden" name="continuar" id="continuar" value="<?php echo $Continua; ?>">
     <input type="hidden" name="codusuariophp" id="codusuariophp" value="<?php echo $Codigousuario; ?>"> 

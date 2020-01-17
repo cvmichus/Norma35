@@ -258,22 +258,37 @@
                                         </td>
                                        
                                          <td>
+                                            <div class="form-group row">
                                             <?php
-                                                $sql012 = "{call sp_INC_NOM35_ObtenerDatosGuia2 (?)}";
-                                                $param012 = array(array($CodUsuarioPHP, SQLSRV_PARAM_IN));
-                                                $qry012 = sqlsrv_query($con,$sql012,$param012);
-                                                while($data012 = sqlsrv_fetch_object($qry012)){
-                                                         $ContestadosG2 = $data012->Contestado;
-                                                        if($ContestadosG2 == 1){
-                                                            ?>                                                           
-     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" onclick="ejecuta_ajax('detalles.php','cod=<?php echo $CodUsuarioPHP; ?>','ventana');" >Ver Resultado</button>
-                                                            
-                                                             <?php
-                                                        }
-                                                } 
+                                            $sql012 = "{call sp_INC_NOM35_ObtenerDatosGuia2 (?)}";
+                                            $param012 = array(array($CodUsuarioPHP, SQLSRV_PARAM_IN));
+                                            $qry012 = sqlsrv_query($con,$sql012,$param012);
+                                            while($data012 = sqlsrv_fetch_object($qry012)){
+                                            $ContestadosG2 = $data012->Contestado;
+                                            if($ContestadosG2 == 1){
+                                            ?>                                                           
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="ejecuta_ajax('detalles.php','cod=<?php echo $CodUsuarioPHP; ?>','ventana');" >Resultado Guia II</button></div>
+
+                                            <div class="form-group row">
+                                            <?php
+                                            }
+                                            } 
+
+                                            $sql03 = "{call sp_INC_NOM35_ObtenerDatosGuia3 (?)}";
+                                            $param03 = array(array($CodUsuarioPHP, SQLSRV_PARAM_IN));
+                                            $qry03 = sqlsrv_query($con,$sql03,$param03);
+                                            while($data03 = sqlsrv_fetch_object($qry03)){
+                                            $ContestadosG3 = $data03->Contestado;
+                                            if($ContestadosG3 == 1){
+                                            ?>                                                           
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="ejecuta_ajax('detallesGII.php','cod=<?php echo $CodUsuarioPHP; ?>','ventana');" >Resultado Guia III</button>
+
+                                            <?php
+                                            }
+                                            } 
 
                                             ?>
-                                             
+                                             </div>   
                                         </td>
                                                     
                                         </tr>
@@ -412,10 +427,10 @@
 
             
                             <?php
-                                        $sql004 = "{call sp_INC_NOM35_RespuestaMuyAlto ()}";
-                                        $qry004 = sqlsrv_query($con,$sql004);
-                                        $data004 = sqlsrv_fetch_object($qry004);
-                                        $data004->MuyAlto;
+                                        $sql0099 = "{call sp_INC_NOM35_RespuestaMuyAlto ()}";
+                                        $qry0099 = sqlsrv_query($con,$sql0099);
+                                        $data0099 = sqlsrv_fetch_object($qry0099);
+                                        $data0099->MuyAlto;
 
                                         $sql005 = "{call sp_INC_NOM35_RespuestaAlto ()}";
                                         $qry005 = sqlsrv_query($con,$sql005);
@@ -457,7 +472,7 @@
 
                                     var data = google.visualization.arrayToDataTable([
                                     ['Task', 'Hours per Day'],
-                                    ['MUY ALTO ',   <?php  echo  $data004->MuyAlto; ?> ],
+                                    ['MUY ALTO ',   <?php  echo  $data0099->MuyAlto; ?> ],
                                     ['ALTO',        <?php  echo  $data005->Alto; ?>],
                                     ['MEDIO ',      <?php  echo  $data006->Medio; ?>],
                                     ['BAJO ',       <?php  echo  $data007->Bajo; ?>],
@@ -547,21 +562,80 @@ function drawBasic() {
                         </div>
                     </div>
 
+  <?php
+                                        $sql0100 = "{call sp_INC_NOM35_RespuestaMuyAltoGII ()}";
+                                        $qry0100 = sqlsrv_query($con,$sql0100);
+                                        $data0100 = sqlsrv_fetch_object($qry0100);
+                                        $data0100->MuyAlto;
 
-                     <div class="col-lg-6 col-sm-6">
+                                        $sql0101 = "{call sp_INC_NOM35_RespuestaAltoGII ()}";
+                                        $qry0101 = sqlsrv_query($con,$sql0101);
+                                        $data0101 = sqlsrv_fetch_object($qry0101);
+                                        $data0101->Alto;
+
+                                         $sql0102 = "{call sp_INC_NOM35_RespuestaMedioGII ()}";
+                                        $qry0102 = sqlsrv_query($con,$sql0102);
+                                        $data0102 = sqlsrv_fetch_object($qry0102);
+                                        $data0102->Medio;
+                                        
+                                        $sql0103 = "{call sp_INC_NOM35_RespuestaBajoGII ()}";
+                                        $qry0103 = sqlsrv_query($con,$sql0103);
+                                        $data0103 = sqlsrv_fetch_object($qry0103);
+                                        $data0103->Bajo;
+                                        
+
+                                        $sql0104 = "{call sp_INC_NOM35_RespuestaNuloGII ()}";
+                                        $qry0104 = sqlsrv_query($con,$sql0104);
+                                        $data0104 = sqlsrv_fetch_object($qry0104);
+                                        $data0104->Nulo;
+
+                                ?>
+                       <div class="col-lg-6 col-sm-6">
                         <div class="panel panel-info">
-                            <div class="panel-heading">OTRA GRAFICA
+                            <div class="panel-heading"> RESULTADOS GUIA III
                                 <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
                             </div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
                                     <p>
-                                     
+                                        
+                                   
+                                    <script type="text/javascript">
+                                    google.charts.load('current', {'packages':['corechart']});
+                                    google.charts.setOnLoadCallback(drawChart);
+
+                                    function drawChart() {
+
+                                    var data = google.visualization.arrayToDataTable([
+                                    ['Task', 'Hours per Day'],
+                                    ['MUY ALTO ',   <?php  echo  $data0100->MuyAlto; ?> ],
+                                    ['ALTO',        <?php  echo  $data0101->Alto; ?>],
+                                    ['MEDIO ',      <?php  echo  $data0102->Medio; ?>],
+                                    ['BAJO ',       <?php  echo  $data0103->Bajo; ?>],
+                                    ['NULO ',       <?php  echo  $data0104->Nulo; ?>]
+                                    
+                                    ]);
+
+                                    var options = {
+                                    title: 'RESULTADOS GUIA IIi',
+                                     is3D: true,
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+                                    chart.draw(data, options);
+                                    }
+                                    </script>
+
+                                    <div id="piechart3" style="width: 500px; height: 300px;"></div>
+
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                     
 
 
                     <!-- Large modal -->

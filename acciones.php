@@ -83,7 +83,7 @@ date_default_timezone_set("America/Mexico_City");
                                
 
 
-               }else{  echo"<script>alert('No se cumplio el QRY ')</script>"; 
+               }else{ // echo"<script>alert('No se cumplio el QRY ')</script>"; 
 
                               if( $qryGuardaGuia1 === false ) {
                               if( ($errors = sqlsrv_errors() ) != null) {
@@ -145,7 +145,7 @@ date_default_timezone_set("America/Mexico_City");
               if ( $qryGuardaGuia5 ){
                                   header("Location: fin5.php?codUsu=".$codusuarioForm."");
 
-               }else{  echo"<script>alert('No se cumplio el QRY5 ')</script>"; 
+               }else{ // echo"<script>alert('No se cumplio el QRY5 ')</script>"; 
 
                               if( $qryGuardaGuia5 === false ) {
                               if( ($errors = sqlsrv_errors() ) != null) {
@@ -281,12 +281,12 @@ date_default_timezone_set("America/Mexico_City");
               $qryGuardaGuia2 = sqlsrv_query($con,$sqlGuardaGuia2,$parametros);
               if ( $qryGuardaGuia2 ){
                        
-                       echo"<script>alert('se cumplio el QRY5 ')</script>";
+                       //echo"<script>alert('se cumplio el QRY5 ')</script>";
 
                                      header("Location: fin2.php");
                                 
 
-               }else{  echo"<script>alert('No se cumplio el QRY5 ')</script>"; 
+               }else{ // echo"<script>alert('No se cumplio el QRY5 ')</script>"; 
 
                               if( $qryGuardaGuia2 === false ) {
                               if( ($errors = sqlsrv_errors() ) != null) {
@@ -477,7 +477,7 @@ date_default_timezone_set("America/Mexico_City");
                        
                        echo"<script>alert('se cumplio el QRY5 ')</script>";
 
-                                     header("Location: fin2.php");
+                                     header("Location: fin3.php");
                                 
 
                }else{  echo"<script>alert('No se cumplio el QRY5 ')</script>"; 

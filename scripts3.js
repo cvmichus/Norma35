@@ -118,13 +118,13 @@
 				if( total < 50){
 					document.getElementById("CRes").value = "NULO";
 				}
-				else if( total <= 50  && total < 75){
+				else if( total >= 50  && total < 75){
 					document.getElementById("CRes").value = "BAJO";
 				}
-				else if( total <= 75  && total < 99){
+				else if( total >= 75  && total < 99){
 					document.getElementById("CRes").value = "MEDIO";
 				}
-				else if( total <= 99  && total < 140){
+				else if( total >= 99  && total < 140){
 					document.getElementById("CRes").value = "ALTO";
 				}
 				else if( total > 140){
@@ -219,16 +219,4 @@
 	 	select71 = document.getElementById("p71").value;
 	 	select72 = document.getElementById("p72").value;
 
-
-	 		
-
-	
-
 }
-
-
-	
-
-
-
-  

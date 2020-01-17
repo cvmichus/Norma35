@@ -158,21 +158,80 @@ date_default_timezone_set("America/Mexico_City");
                     <li class="user-pro">
                         <a href="#" class="waves-effect"><img src="plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"> <?php echo $Codigousuario; echo "-"; echo  $NombreUsuario; ?> <span class="fa arrow"></span></span>
                         </a>
-                        <ul class="nav nav-second-level">
-                         <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Salir</a></li>
+                       <ul class="nav" id="side-menu">
+                
+                    
+                   
+                            <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>
                     </li>
                     <li class="nav-small-cap m-t-10">-Menu Principal</li>
-                    <li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Home</span></a></li>
+                    <li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Inicio</span></a></li>
                     
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Encuesta <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="chat.html">Chat-message</a></li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Inbox<span class="fa arrow"></span></a>
+                            <li><a href="javascript:void(0)" class="waves-effect">Norma 35<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li> <a href="inbox.html">Mail box</a></li>
-                                    <li> <a href="inbox-detail.html">Inbox detail</a></li>
-                                    <li> <a href="compose.html">Compose mail</a></li>
+                                    <?php
+                                        if($ContestoGuia1PHP==1){
+                                            ?>
+                                            <li> <a href="#">Guia I Contestada</a></li>
+                                            <?php
+                                        }
+                                        else{
+                                             ?>
+                                               <li> <a href="sistema.php">Guia I</a></li> 
+                                            <?php
+                                        }
+                                    ?>
+                                     <?php
+                                        /*
+                                        ContestoGuia5PHP
+                                         ContestoGuia2PHP
+                                         */
+                                        if($ContestoGuia5PHP==1){
+                                            ?>
+                                             <li> <a href="#">Guia V Contestada</a></li>
+                                            <?php
+                                        }
+                                        else{
+                                             ?>
+                                                 <li> <a href="cuestionario5.php">Guia V</a></li>
+                                            <?php
+                                        }
+                                     ?>   
+                                         <?php
+                                        /*
+                                        ContestoGuia5PHP
+                                         ContestoGuia2PHP
+                                         */
+                                        if($ContestoGuia2PHP==1){
+                                            ?>
+                                             <li> <a href="cuestionario2.php">Guia II Contestada</a></li>
+                                            <?php
+                                        }
+                                        else{
+                                             ?>
+                                                 <li> <a href="cuestionario2.php">Guia II</a></li>
+                                            <?php
+                                        }
+                                     ?>  
+
+                                          <?php
+                                       
+                                        if($ContestoGuia3PHP==1){
+                                            ?>
+                                             <li> <a href="cuestionario3.php">Guia III Contestada</a></li>
+                                            <?php
+                                        }
+                                        else{
+                                             ?>
+                                                 <li> <a href="cuestionario3.php">Guia III</a></li>
+                                            <?php
+                                        }
+                                     ?>  
+                                  
+                                   
                                 </ul>
                             </li>
                         </ul>
@@ -1429,6 +1488,9 @@ date_default_timezone_set("America/Mexico_City");
     <input   class="form-control"  type="hidden" name="Cdom" id="Cdom"> 
     <input   class="form-control"  type="hidden" name="Ccat" id="Ccat"> 
     <input   class="form-control"  type="hidden" name="Cfinal" id="Cfinal"> 
+    <input   class="form-control"  type="hidden" name="CRes" id="CRes"> 
+    <input type="hidden" name="continuar" id="continuar" value="<?php echo $Continua; ?>">
+       <input type="hidden" name="codusuariophp" id="codusuariophp" value="<?php echo $Codigousuario; ?>"> 
 
 
 
