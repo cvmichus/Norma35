@@ -76,6 +76,31 @@
     display: table;
     color: #4ad1e5;
 }
+
+/*
+Full screen Modal 
+*/
+.fullscreen-modal .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .fullscreen-modal .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fullscreen-modal .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fullscreen-modal .modal-dialog {
+     width: 1170px;
+  }
+}
       </style>
 
 <body>
@@ -105,9 +130,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $Codigousuario; echo "-"; echo  $NombreUsuario; ?></b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> Mi Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="index.php?op=logout"><i class="fa fa-power-off"></i> Salir</a></li>
+                               <li><a href="index.php?op=logout"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
@@ -267,7 +290,10 @@
                                             $ContestadosG2 = $data012->Contestado;
                                             if($ContestadosG2 == 1){
                                             ?>                                                           
-                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="ejecuta_ajax('detalles.php','cod=<?php echo $CodUsuarioPHP; ?>','ventana');" >Resultado Guia II</button></div>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="cargarDiv('#ventana','detalles.php?cod=<?php echo $CodUsuarioPHP; ?>');" >Resultado Guia II</button></div>
+                                            <!--ejecuta_ajax('detalles.php','cod=<?php //echo $CodUsuarioPHP; ?>','ventana');-->
+
+
 
                                             <div class="form-group row">
                                             <?php
@@ -304,6 +330,7 @@
 
 
                     <!--TOTALTES COUNTER-->
+
                 <div class="row">
 
                    <?php
@@ -378,7 +405,6 @@
 
           <!--TOTALTES COUNTER-->
       
-
 
               <!--GRAFICAS-->
                   <div class="col-lg-6 col-sm-6">
@@ -640,7 +666,7 @@ function drawBasic() {
 
                     <!-- Large modal -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fullscreen-modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -667,7 +693,7 @@ function drawBasic() {
                  
                 <!--row -->
              
-
+  <!--GRAFICAS-->
 
                             
 
@@ -738,8 +764,12 @@ function drawBasic() {
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
+
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
 
 <script type="text/javascript" language="javascript" class="init">
@@ -747,6 +777,35 @@ function drawBasic() {
         var selected = [];
 
         $('#example2').DataTable( {
+          dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+            stateSave: true,
+            "order": [[ 1, "desc" ]],
+        } );
+
+        $('#example tbody').on('click', 'tr', function () {
+            var id = this.id;
+            var index = $.inArray(id, selected);
+
+            if ( index === -1 ) {
+                selected.push( id );
+            } else {
+                selected.splice( index, 1 );
+            }
+
+            $(this).toggleClass('selected');
+        } );
+
+    } )
+
+
+
+ $(document).ready(function() {
+        var selected = [];
+
+        $('#example4').DataTable( {
           dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
@@ -894,6 +953,15 @@ function ejecuta_ajax(archivo, parametros, capa){
         xmlhttp.open("GET",archivo+"?"+parametros+"&y="+x, true);
         xmlhttp.send();
         }
+
+          /***************************/  
+
+        function cargarDiv(div,url)
+        {
+        $(div).load(url);
+         $('#ventana').slideDown(1000);  
+        }
+
 
       </script>
 
