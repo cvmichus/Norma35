@@ -453,6 +453,7 @@ Full screen Modal
 
             
                             <?php
+                                       /*
                                         $sql0099 = "{call sp_INC_NOM35_RespuestaMuyAlto ()}";
                                         $qry0099 = sqlsrv_query($con,$sql0099);
                                         $data0099 = sqlsrv_fetch_object($qry0099);
@@ -478,7 +479,10 @@ Full screen Modal
                                         $qry008 = sqlsrv_query($con,$sql008);
                                         $data008 = sqlsrv_fetch_object($qry008);
                                         $data008->Nulo;
+                                        */
 
+
+                                        
                                 ?>
                        <div class="col-lg-6 col-sm-6">
                         <div class="panel panel-info">
@@ -660,6 +664,55 @@ function drawBasic() {
                             </div>
                         </div>
                     </div>
+
+                    <hr>
+
+ <div class="row">
+  <div class="col-md-12">
+                        <div class="white-box">
+                    <?php
+                     
+
+
+              $sql01202020 = "{call sp_INC_NOM35_Respuesta_Alto ()}";
+              $qry01202020 = sqlsrv_query($con,$sql01202020);
+              $dataDatosG2 = sqlsrv_fetch_object($qry01202020);
+
+            /* CATEGORIA */
+
+             $AmbienteTrabajo =   $dataDatosG2->P2_C2 + $dataDatosG2->P1_C2 + $dataDatosG2->P3_C2; 
+             
+            $Factores = $dataDatosG2->P4_C2 + $dataDatosG2->P9_C2 + $dataDatosG2->P5_C2 + $dataDatosG2->P6_C2  + $dataDatosG2->P7_C2 + $dataDatosG2->P8_C2 + $dataDatosG2->P41_C2 + $dataDatosG2->P42_C2+ $dataDatosG2->P43_C2 + $dataDatosG2->P10_C2  + $dataDatosG2->P11_C2  + $dataDatosG2->P12_C2 + $dataDatosG2->P13_C2 + $dataDatosG2->P20_C2+ $dataDatosG2->P21_C2 + $dataDatosG2->P22_C2 + $dataDatosG2->P18_C2 + $dataDatosG2->P19_C2 + $dataDatosG2->P26_C2 + $dataDatosG2->P27_C2;
+
+            $Organizacion = $dataDatosG2->P14_C2 + $dataDatosG2->P15_C2 + $dataDatosG2->P16_C2+ $dataDatosG2->P17_C2;
+            $Liderazgo = $dataDatosG2->P23_C2 + $dataDatosG2->P24_C2 + $dataDatosG2->P25_C2+ $dataDatosG2->P28_C2 + $dataDatosG2->P29_C2 + $dataDatosG2->P30_C2 + $dataDatosG2->P31_C2 + $dataDatosG2->P32_C2 + $dataDatosG2->P44_C2  + $dataDatosG2->P45_C2 + $dataDatosG2->P46_C2 ; + $dataDatosG2->P33_C2 + $dataDatosG2->P34_C2 + $dataDatosG2->P35_C2 + $dataDatosG2->P36_C2 + $dataDatosG2->P37_C2 + $dataDatosG2->P38_C2 + $dataDatosG2->P39_C2 + $dataDatosG2->P40_C2;
+
+          /* DOMINIO */
+
+          $Condiciones = $dataDatosG2->P2_C2 + $dataDatosG2->P1_C2 + $dataDatosG2->P3_C2;
+          $CargaTrabajo= $dataDatosG2->P4_C2 + $dataDatosG2->P9_C2 + $dataDatosG2->P5_C2 + $dataDatosG2->P6_C2  + $dataDatosG2->P7_C2 + $dataDatosG2->P8_C2 + $dataDatosG2->P41_C2 + $dataDatosG2->P42_C2+ $dataDatosG2->P43_C2 + $dataDatosG2->P10_C2  + $dataDatosG2->P11_C2  + $dataDatosG2->P12_C2 + $dataDatosG2->P13_C2;
+          $FaltaControl= $dataDatosG2->P20_C2+ $dataDatosG2->P21_C2 + $dataDatosG2->P22_C2 + $dataDatosG2->P18_C2 + $dataDatosG2->P19_C2 + $dataDatosG2->P26_C2 + $dataDatosG2->P27_C2;
+          $JornadaTrabajo= $dataDatosG2->P14_C2 + $dataDatosG2->P15_C2;
+          $Interferencia=  $dataDatosG2->P16_C2 + $dataDatosG2->P17_C2;
+          $Liderazgo2= $dataDatosG2->P23_C2 + $dataDatosG2->P24_C2 + $dataDatosG2->P25_C2 + $dataDatosG2->P28_C2 + $dataDatosG2->P29_C2;
+          $Relaciones= $dataDatosG2->P30_C2 + $dataDatosG2->P31_C2 + $dataDatosG2->P32_C2 + $dataDatosG2->P28_C2 + $dataDatosG2->P29_C2;
+          $Violencia= $dataDatosG2->P33_C2 + $dataDatosG2->P34_C2 + $dataDatosG2->P35_C2 + $dataDatosG2->P36_C2 + $dataDatosG2->P37_C2 + $dataDatosG2->P38_C2 + $dataDatosG2->P39_C2 + $dataDatosG2->P40_C2;
+
+
+              echo "Calificacion Dominio: "; echo $CDom =  $Condiciones +  $CargaTrabajo +  $FaltaControl +  $JornadaTrabajo +  $Interferencia + $Liderazgo2 + $Relaciones + $Violencia; echo "<br>";
+              echo "Calificacion Categoria: "; echo $CCat = $AmbienteTrabajo + $Factores + $Organizacion + $Liderazgo;  echo "<br>";
+              $total = $CCat + $CDom;
+              echo "Calificacion Final: "; echo "<span style='font-weight: bold;font-style: italic;'>"; echo $total; echo "</span>";  echo "<br>";
+              echo "<hr>";
+
+
+              
+
+
+                    ?>
+</div>
+</div>
+</div>
 
                      
 

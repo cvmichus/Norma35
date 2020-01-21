@@ -3086,6 +3086,31 @@ Basic List
   color: #ffffff;
   border-color: #85b4d0;
 }
+.alert-nulo {
+  background: #08ECC9;
+  color: #ffffff;
+  border-color: #ff6849;
+}
+.alert-bajo {
+  background: #ff6849;
+  color: #ffffff;
+  border-color: #ff6849;
+}
+.alert-medio {
+  background: #ff6849;
+  color: #ffffff;
+  border-color: #ff6849;
+}
+.alert-alto {
+  background: #ff6849;
+  color: #ffffff;
+  border-color: #ff6849;
+}
+.alert-muyalto {
+  background: #ff6849;
+  color: #ffffff;
+  border-color: #ff6849;
+}
 .alert-info .closed {
   color: inherit;
 }

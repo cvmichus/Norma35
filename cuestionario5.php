@@ -16,11 +16,10 @@
     $NombreUsuario =$_SESSION['Nombre'];
     $CorreoUsuario = $_SESSION['CorreoUsu'];
 
-    $Continua = $_GET['continua'];
+      $Continua = $_GET['continua'];
     $secc = "guia5";
 
-
-      $sql110 = "{call sp_INC_NOM35_ContestaronGuia1 (?)}";
+ $sql110 = "{call sp_INC_NOM35_ContestaronGuia1 (?)}";
         $param110 = array(array($Codigousuario, SQLSRV_PARAM_IN));
         $qry110 = sqlsrv_query($con,$sql110,$param110);
         $data110 = sqlsrv_fetch_object($qry110);
@@ -57,8 +56,8 @@
                                // echo"<script>alert('No ha contestado la Guia 1')</script>";
                       }
 
-  $secc = "s1";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,13 +86,16 @@
 
     <link href="pixel-html/css/colors/blue.css" id="theme" rel="stylesheet">
 
-     <link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+     <script src="scripts.js"></script>
+
+
 </head>
 
 <body>
@@ -126,8 +128,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo  $NombreUsuario; ?></b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> Mi Perfil</a></li>
-                            <li role="separator" class="divider"></li>
+                           
                             <li><a href="index.php?op=logout"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -142,7 +143,7 @@
             <!-- /.navbar-static-side -->
         </nav>
         <!-- Left navbar-header -->
-         <div class="navbar-default sidebar" role="navigation">
+        <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                 <ul class="nav" id="side-menu">
                 
@@ -150,12 +151,12 @@
                         <a href="#" class="waves-effect"><img src="plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"> <?php echo $Codigousuario; echo "-"; echo  $NombreUsuario; ?> <span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i> Mi Perfil</a></li>
+                   
                             <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>
                     </li>
                     <li class="nav-small-cap m-t-10">-Menu Principal</li>
-                    <li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Inicio</span></a></li>
+                    <li><a href="#" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Inicio</span></a></li>
                     
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Encuesta <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
@@ -174,7 +175,10 @@
                                         }
                                     ?>
                                      <?php
-                                       
+                                        /*
+                                        ContestoGuia5PHP
+                                         ContestoGuia2PHP
+                                         */
                                         if($ContestoGuia5PHP==1){
                                             ?>
                                              <li> <a href="#">Guia V Contestada</a></li>
@@ -187,7 +191,9 @@
                                         }
                                      ?>   
                                          <?php
-                                   
+                                        /*
+                                        ContestoGuia5PHP
+                                         ContestoGuia2PHP
                                          */
                                         if($ContestoGuia2PHP==1){
                                             ?>
@@ -201,8 +207,7 @@
                                         }
                                      ?>  
 
-
-                                     <?php
+                                          <?php
                                        
                                         if($ContestoGuia3PHP==1){
                                             ?>
@@ -230,10 +235,11 @@
         <div id="page-wrapper">
             <div class="container-fluid">
               
-                                    <!-- /.row -->
-                                    <div class="row">
-                    <h2>Guía de referencia V</h2>
-                    <h4>Datos del trabajador</h4>
+                <!-- /.row -->
+                <div class="row">
+
+                     <div class="myadmin-alert myadmin-alert-icon myadmin-alert-click alert-success myadmin-alert-top alerttop"> <i class="ti-user"></i> This is an example top alert. You can edit what u wish. <a href="#" class="closed">&times;</a> </div>
+
                    
                                    <div class="col-md-12">
                         <div class="white-box">
@@ -498,7 +504,6 @@
                     </div>
 
 
-
                 </div>
                 <!--row -->
                 <!-- /.row -->
@@ -508,9 +513,8 @@
                 <!-- /.right-sidebar -->
             </div>
             <!-- /.container-fluid -->
-          <?php include("footer.php"); ?>
+         <?php include("footer.php"); ?>
         </div>
-        <!-- /#page-wrapper -->
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
@@ -524,18 +528,13 @@
     <script src="pixel-html/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
     <script src="pixel-html/js/waves.js"></script>
-    <!--Counter js -->
-    <script src="plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+
     <!--Morris JavaScript -->
-    <script src="plugins/bower_components/raphael/raphael-min.js"></script>
-    <script src="plugins/bower_components/morrisjs/morris.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="pixel-html/js/custom.min.js"></script>
     <script src="pixel-html/js/dashboard1.js"></script>
     <!-- Sparkline chart JavaScript -->
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
+
     <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
@@ -551,11 +550,7 @@
     });
     </script>
     <!--Style Switcher -->
-    <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-
-      <script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-
-     <script src="verificar.js"></script>
+   
 
 
          <script src="pixel-html/js/toastr.js"></script>
@@ -599,7 +594,10 @@
     $("#showbottomright").click(function() {
         $("#alertbottomright").fadeToggle(350);
     });
+
     </script>
+
+
 
 </body>
 
