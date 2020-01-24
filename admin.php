@@ -290,7 +290,7 @@ Full screen Modal
                                             $ContestadosG2 = $data012->Contestado;
                                             if($ContestadosG2 == 1){
                                             ?>                                                           
-                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="cargarDiv('#ventana','detalles.php?cod=<?php echo $CodUsuarioPHP; ?>');" >Resultado Guia II</button></div>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="cargarDiv2('#ventana','detalles.php?cod=<?php echo $CodUsuarioPHP; ?>');" >Resultado Guia II</button></div>
                                             <!--ejecuta_ajax('detalles.php','cod=<?php //echo $CodUsuarioPHP; ?>','ventana');-->
 
 
@@ -881,6 +881,34 @@ function drawBasic() {
         } );
 
     } )
+
+
+  $(document).ready(function() {
+        var selected = [];
+
+        $('#example5').DataTable( {
+          dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+            stateSave: true,
+            "order": [[ 1, "desc" ]],
+        } );
+
+        $('#example tbody').on('click', 'tr', function () {
+            var id = this.id;
+            var index = $.inArray(id, selected);
+
+            if ( index === -1 ) {
+                selected.push( id );
+            } else {
+                selected.splice( index, 1 );
+            }
+
+            $(this).toggleClass('selected');
+        } );
+
+    } )
 </script>
 
  <script>
@@ -1013,6 +1041,12 @@ function ejecuta_ajax(archivo, parametros, capa){
         {
         $(div).load(url);
          $('#ventana').slideDown(1000);  
+        }
+
+
+        function cargarDiv2(div,url)
+        {
+        $(div).load(url);
         }
 
 

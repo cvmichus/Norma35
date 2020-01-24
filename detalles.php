@@ -15,19 +15,77 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
+<script>
+   $(document).ready(function() {
+        var selected = [];
+
+        $('#example4').DataTable( {
+          dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+            stateSave: true,
+            "order": [[ 1, "desc" ]],
+        } );
+
+        $('#example tbody').on('click', 'tr', function () {
+            var id = this.id;
+            var index = $.inArray(id, selected);
+
+            if ( index === -1 ) {
+                selected.push( id );
+            } else {
+                selected.splice( index, 1 );
+            }
+
+            $(this).toggleClass('selected');
+        } );
+
+    } )
+
+
+    $(document).ready(function() {
+        var selected = [];
+
+        $('#example5').DataTable( {
+          dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+            stateSave: true,
+            "order": [[ 1, "desc" ]],
+        } );
+
+        $('#example tbody').on('click', 'tr', function () {
+            var id = this.id;
+            var index = $.inArray(id, selected);
+
+            if ( index === -1 ) {
+                selected.push( id );
+            } else {
+                selected.splice( index, 1 );
+            }
+
+            $(this).toggleClass('selected');
+        } );
+
+    } )
+
+</script>
+
   <style>
-	#example td, #example th {
+	#example4 td, #example4 th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
   vertical-align: middle;
 }
 
-#example tr:nth-child(even){background-color: #f2f2f2;}
+#example4 tr:nth-child(even){background-color: #f2f2f2;}
 
-#example tr:hover {background-color: #ddd;}
+#example4 tr:hover {background-color: #ddd;}
 
-#example th {
+#example4 th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -88,7 +146,7 @@
 						<hr>
 
 
-						<table id="example" class="stripe"  style="width:100%; border-collapse: collapse;">
+						<table id="example4" class="stripe"  style="width:100%; border-collapse: collapse;">
 							<thead>
 								<h2>Categoría</h2>
 										<tr style="vertical-align: middle;text-align: center;font-size: .8em;">
@@ -281,26 +339,8 @@
 											?>
 											</td>
 										</tr>
-								
-								
-						     </tbody>
 
-						</table>
 
-						<hr>
-
-							<table id="example" class="stripe"  style="width:100%; border-collapse: collapse;">
-							<thead>
-								<h2>Dominio</h2>
-										<tr style="vertical-align: middle;text-align: center;font-size: .8em;">
-										<th>ITEM</th>
-										<th>PUNTOS</th>
-										<th>NIVEL DE RIESGO</th>
-										<th>NECESIDAD DE ACCION</th>
-								
-										</tr>
-							</thead>
-							<tbody>
 										<tr>
 										 <td>Condiciones en el ambiente de trabajo</td>
 										 <td><?php echo $Condiciones; ?> </td>
@@ -663,33 +703,13 @@
 										?>
 										 </td>
 										</tr>
-
-
-
-
-								
-								
-						     </tbody>
-
-						</table>
-
-						<hr>
-
-
-			<?php
-	
-				
-			echo "Calificacion Dominio: "; echo $CDom =  $Condiciones +  $CargaTrabajo +  $FaltaControl +  $JornadaTrabajo +  $Interferencia + $Liderazgo2 + $Relaciones + $Violencia; echo "<br>";
-			echo "Calificacion Categoria: "; echo $CCat = $AmbienteTrabajo + $Factores + $Organizacion + $Liderazgo;  echo "<br>";
-			$total = $CCat + $CDom;
-			echo "Calificacion Final: "; echo "<span style='font-weight: bold;font-style: italic;'>"; echo $total; echo "</span>";  echo "<br>";
-				echo "<hr>";
-
-						
-				//$total = 20;
-
-
-					if( $total < 20){
+										<tr>
+											<td><?php echo "Calificacion Dominio: "; echo $CDom =  $Condiciones +  $CargaTrabajo +  $FaltaControl +  $JornadaTrabajo +  $Interferencia + $Liderazgo2 + $Relaciones + $Violencia; ?></td>
+											<td><?php echo "Calificacion Categoria: "; echo $CCat = $AmbienteTrabajo + $Factores + $Organizacion + $Liderazgo;  ?></td>
+											<td><?php $total = $CCat + $CDom; echo "Calificacion Final: "; echo "<span style='font-weight: bold;font-style: italic;'>"; echo $total; echo "</span>"; ?></td>
+											<td>
+												<?php
+													if( $total < 20){
 					$alert="alert alert-nulo";
 					$estilo ="background: #08ECC9; color: #000; border-color: #08ECC9;";
 					$txt1="NULO";
@@ -723,12 +743,48 @@
 
 
 
-				?>
-						
-				<div class="<?php echo $alert; ?>" style="<?php echo $estilo; ?>" role="alert">
+												?>
+
+												<div class="<?php echo $alert; ?>" style="<?php echo $estilo; ?>" role="alert">
 				<?php echo $txt1; ?><br>
 				<?php echo $txt; ?>
 				</div>
+
+											</td>
+										</tr>
+								
+								
+						     </tbody>
+
+						</table>
+
+						<hr>
+
+							
+						<hr>
+
+
+			<?php
+	
+				
+			//echo "Calificacion Dominio: "; echo $CDom =  $Condiciones +  $CargaTrabajo +  $FaltaControl +  $JornadaTrabajo +  $Interferencia + $Liderazgo2 + $Relaciones + $Violencia; echo "<br>";
+			//echo "Calificacion Categoria: "; echo $CCat = $AmbienteTrabajo + $Factores + $Organizacion + $Liderazgo;  echo "<br>";
+			//$total = $CCat + $CDom;
+			//echo "Calificacion Final: "; echo "<span style='font-weight: bold;font-style: italic;'>"; echo $total; echo "</span>";  echo "<br>";
+				echo "<hr>";
+
+						
+				//$total = 20;
+
+
+					
+				
+
+
+
+				?>
+						
+				
 
 				<?php				
 			}
